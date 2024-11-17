@@ -1,0 +1,3 @@
+All globaly used data goes in here.
+Maybe you have some json-files that are used globaly or some constants.
+If you have feature- or page-specific data you might consider placing these files in the features- or pages-folder.

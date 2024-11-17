@@ -1,0 +1,7 @@
+Generate Folders for every globaly used feature in your application, something like authentication, navigation, settings, etc.
+Inside these generated folders you might generate folders for feature-specific elements like components, hooks, services, etc. 
+If you are creating features, that are used only on a single page, like a todo-feature for your todo-page, you might consider placing these features inside the feature-folder of the specific page.
+
+Important note: You should create a index.js/ts/jsx/tsx-file for each feature which is exporting all your feature-components/hooks/services.
+
+General Folder-Structure would be the same as the src folder minus the feature-folder and all empty folders that you dont need. Because you should never nest features!

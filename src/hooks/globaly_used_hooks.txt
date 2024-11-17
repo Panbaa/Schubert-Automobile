@@ -1,0 +1,2 @@
+Globaly accessible hooks go into this folder.
+If you have feature- or page-specifc hooks, you might consider placing them in the specifc hooks-folder for that page/feature.

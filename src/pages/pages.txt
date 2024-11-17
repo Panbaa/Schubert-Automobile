@@ -1,0 +1,2 @@
+Here you should create all your pages as single files as long as they only user globaly accessible elements.
+If you have any Features, Components, Libraries, etc. that are only used in one of your pages, you might consider a folder for that page with corresponding sub-folders for the specifc components, features, libs, etc.

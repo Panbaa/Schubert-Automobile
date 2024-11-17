@@ -1,0 +1,2 @@
+Libraries and apis that are used globaly go into here.
+If you have libraries or apis that are specific to a feature or page and only used there, you might consider placing these files in the specifc lib-folder of that page or feature.
