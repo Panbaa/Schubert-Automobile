@@ -2,81 +2,11 @@ import './Home.css'
 
 function Home() {
   return (
-    <>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+    <div className='flex-grow'>
+      <div className='w-full flex justify-center mt-10'>
+        <img src="./SA-Logo-Transparent.png" alt="Logo" />
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p><p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p><p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p><p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p><p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p><p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p><p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p><p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p><p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p><p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p><p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p><p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p><p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p><p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p><p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p><p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p><p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p><p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p><p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p><p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p><p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p><p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p><p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p><p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p><p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p><p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p><p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p><p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p><p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p><p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p><p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p><p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p><p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    </div>
   )
 }
 

@@ -1,3 +1,0 @@
-All the globaly used components go in here.
-If you have components that are used only in specific features or on specific pages consider storing/managing them inside your pages- or features-folder.
-If they are themed you can group them into folders like ui, form, etc. to have it all more organized. On smaller projects you typicaly dont need that.

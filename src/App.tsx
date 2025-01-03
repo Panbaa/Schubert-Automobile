@@ -1,24 +1,34 @@
 import Home from './pages/Home'
-import './App.css'
-import Navbar from './components/Navbar'
+import Navbar from './components/Navbar/Navbar'
+import Footer from './components/Footer/Footer';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Reinigung from './pages/Reinigung';
+import Verkauf from './pages/Verkauf';
+import Ankauf from './pages/Ankauf';
+import Kontakt from './pages/Kontakt';
+import Impressum from './pages/Impressum';
 import SeiteNichtGefunden from './pages/SeiteNichtGefunden';
+import NavbarElements from './components/Navbar/utils/NavbarElements';
 
 function App() {
   return (
-    <>
-      <Navbar />
+    <div className='bg-gray-900 w-full h-full min-h-screen flex flex-col'>
       <BrowserRouter>
-      <Routes>
-        <Route index element={<Home />} />
-        <Route path="/" element={<Home />} />
-        <Route path="/Home" element={<Home />} />
-        <Route path="/Reinigung" element={<Reinigung />} />
-        <Route path="*" element={<SeiteNichtGefunden />} /> 
-      </Routes>
-    </BrowserRouter>
-    </>
+        <Navbar elements={NavbarElements} />
+        <Routes>
+          <Route index element={<Home />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/Home" element={<Home />} />
+          <Route path="/Reinigung" element={<Reinigung />} />
+          <Route path="/Verkauf" element={<Verkauf />} />
+          <Route path="/Ankauf" element={<Ankauf />} />
+          <Route path="/Kontakt" element={<Kontakt />} />
+          <Route path="/Impressum" element={<Impressum />} />
+          <Route path="*" element={<SeiteNichtGefunden />} />
+        </Routes>
+        <Footer />
+      </BrowserRouter>
+    </div>
   )
 }
 
