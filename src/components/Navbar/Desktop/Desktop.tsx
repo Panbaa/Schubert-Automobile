@@ -22,7 +22,7 @@ const Desktop = ({ elements, leftSideIcon }: IDesktopProps ) => {
             <div className="h-full pr-8 flex items-center justify-end gap-4">
                 {elements.map((element) => {
                     return(
-                        <button onClick={() => handleNavigation(element.name)} key={element.key} className="p-2 text-sm font-medium flex gap-1 items-center border-b-2 border-b-transparent hover:border-gray-200 active:bg-gray-900 text-white active:rounded">
+                        <button onClick={() => handleNavigation(element.name)} key={element.key} className="p-2 text-sm font-medium flex gap-1 items-center border-b-2 border-b-transparent transition ease-in-out hover:scale-125 active:bg-gray-900 text-white active:rounded">
                             {element.icon && <span>{element.icon}</span>}
                             <span>{element.name}</span>
                         </button>
