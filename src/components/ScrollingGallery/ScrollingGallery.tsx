@@ -10,13 +10,13 @@ const ScrollingGallery: React.FC<ScrollingGalleryProps> = ({ images }) => {
 
   const scrollLeft = () => {
     if (galleryRef.current) {
-      galleryRef.current.scrollBy({ left: -200, behavior: "smooth" });
+      galleryRef.current.scrollBy({ left: -225, behavior: "smooth" });
     }
   };
 
   const scrollRight = () => {
     if (galleryRef.current) {
-      galleryRef.current.scrollBy({ left: 200, behavior: "smooth" });
+      galleryRef.current.scrollBy({ left: 225, behavior: "smooth" });
     }
   };
 

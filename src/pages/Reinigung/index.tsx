@@ -4,7 +4,8 @@ import ScrollingGallery from '../../components/ScrollingGallery/ScrollingGallery
 
 function Reinigung() {
   return (
-    <div className='flex-grow p-4 space-y-5'>
+    <div className='flex-grow p-4 lg:justify-center lg:flex'>
+      <div id='bodyWrapper' className='lg:w-[100rem] space-y-5'>
       <h1 className='text-center mt-3 text-2xl justify-center items-center flex'><Sparkles size={30} /><span className='ms-2'>Reinigung</span></h1>
       <div>
         Bei uns können Sie mit Ihrem Auto eine Vielzahl von Reinigungen durchlaufen! Unser erfahrenes Reinigungspersonal behandelt jedes Auto mit größter Sorgfalt und Genauigkeit.
@@ -33,6 +34,7 @@ function Reinigung() {
         Zusätzlich bieten wir professionelle Polierungen an, um den Lack zu schützen und wieder zum Strahlen zu bringen.
         Auf Wunsch entfernen wir auch fachgerecht alle Folien oder Beschriftungen von Ihrem Fahrzeug, ohne Rückstände zu hinterlassen. 
         Mit unserer Außenreinigung wird Ihr Auto nicht nur sauber, sondern auch perfekt gepflegt – bis ins kleinste Detail! Vertrauen Sie auf unsere Expertise für einen makellosen Auftritt.</p>
+      </div>
     </div>
   )
 }
