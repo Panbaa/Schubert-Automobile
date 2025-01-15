@@ -9,7 +9,7 @@ export interface INavbarProps {
 
 const Navbar = ({ elements }: INavbarProps) => {
   return (
-    <div className="w-full h-16 border-b border-gray-600 bg-gray-800">
+    <div id="navbar-wrapper" className="w-full h-16 border-b border-gray-600 bg-gray-800">
       <Desktop elements={elements} leftSideIcon={<img src='./SA-Logo-Transparent.png' className='rounded'/>} />
       <Phone elements={elements} leftSideIcon={<img src='./SA-Logo-Transparent.png' className='rounded'/>} />
     </div>

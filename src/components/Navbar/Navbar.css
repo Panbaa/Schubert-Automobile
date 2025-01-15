@@ -1,0 +1,5 @@
+#navbar-wrapper {
+    z-index: 9999999999;
+    position: sticky;
+    top: 0;
+}
