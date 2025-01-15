@@ -15,11 +15,12 @@ const Desktop = ({ elements, leftSideIcon }: IDesktopProps ) => {
     };
 
     return (
-        <div className="w-full text-black h-full hidden justify-between sm:flex flex-row">
-            <div id="desktopNavbarIcon" className="h-full flex items-center justify-start ml-8">
-                {leftSideIcon}
+        <div className="w-full h-full hidden justify-start lg:flex flex-row items-center">
+            <div id="desktopNavbarIcon" className="h-full flex items-center justify-start ml-8 ">
+                {leftSideIcon} 
             </div>
-            <div className="h-full pr-8 flex items-center justify-end gap-4">
+                <p className="ms-3 text-white text-xl">Schubert Automobile</p>
+            <div className="h-full pr-8 ms-auto me-0 flex items-center justify-end gap-4">
                 {elements.map((element) => {
                     return(
                         <button onClick={() => handleNavigation(element.name)} key={element.key} className="p-2 text-sm font-medium flex gap-1 items-center border-b-2 border-b-transparent transition ease-in-out hover:scale-125 active:bg-gray-900 text-white active:rounded">
