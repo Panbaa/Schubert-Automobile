@@ -1,34 +1,59 @@
+import { HandCoins } from 'lucide-react'
 import './Ankauf.css'
 
 function Ankauf() {
   return (
     <div className='flex-grow p-4 lg:justify-center lg:flex'>
       <div id='bodyWrapper' className='lg:w-[100rem] space-y-5'>
-      <h1 className='text-center mt-3 text-2xl justify-center items-center flex'><Sparkles size={30} /><span className='ms-2'>Reinigung</span></h1>
-      <div>
-        Bei uns können Sie mit Ihrem Auto eine Vielzahl von Reinigungen durchlaufen! Unser erfahrenes Reinigungspersonal behandelt jedes Auto mit größter Sorgfalt und Genauigkeit.
-      </div>
-      <hr className='border-gray-600' />
-      <h2 className='text-xl'>Polsterreinigung</h2>
-      <p>Bei unserer professionellen Polsterreinigung setzen wir auf eine gründliche und effektive Methode, um Ihre Polster wieder strahlen zu lassen.
-        Durch sorgfältiges Einschamponieren lösen wir selbst tiefsitzenden Schmutz und hartnäckige Verunreinigungen.
-        Anschließend werden die Rückstände mit unseren leistungsstarken Waschsaugern restlos entfernt.
-        Das Ergebnis: hygienisch saubere und erfrischte Polster, die wieder wie neu aussehen und sich angenehm anfühlen.
-        Vertrauen Sie auf unsere Expertise für eine porentiefe Reinigung!</p>
-      <hr className='border-gray-600' />
-      <h2 className='text-xl'>Innenraumreinigung</h2>
-      <p>Neben unserer professionellen Polsterreinigung bieten wir auch eine umfassende Innenraumreinigung für Ihr Fahrzeug an.
-        Dabei kümmern wir uns um alle Bereiche, um den Innenraum wieder in Bestform zu bringen.
-        Ob Türen, Kunststoffe, Kofferraum, Fußraum oder der Dachhimmel – wir reinigen und pflegen jedes Detail gründlich und schonend.
-        Mit modernsten Methoden und hochwertigen Reinigungsmitteln entfernen wir Staub, Flecken und Schmutz, sodass Ihr Auto nicht nur sauber, sondern auch wie neu wirkt.
-        Für ein frisches und gepflegtes Fahrerlebnis – verlassen Sie sich auf unsere Expertise!</p>
-      <hr className='border-gray-600' />
-      <h2 className='text-xl'>Außenreinigung</h2>
-      <p>Bei unserer Außenreinigung legen wir größten Wert auf Sorgfalt und Detailgenauigkeit, damit Ihr Fahrzeug in neuem Glanz erstrahlt. 
-        Wir kümmern uns umfassend um die Reinigung des gesamten äußeren Bereichs, von der Lackpflege bis hin zur gründlichen Reinigung der Felgen. 
-        Zusätzlich bieten wir professionelle Polierungen an, um den Lack zu schützen und wieder zum Strahlen zu bringen.
-        Auf Wunsch entfernen wir auch fachgerecht alle Folien oder Beschriftungen von Ihrem Fahrzeug, ohne Rückstände zu hinterlassen. 
-        Mit unserer Außenreinigung wird Ihr Auto nicht nur sauber, sondern auch perfekt gepflegt – bis ins kleinste Detail! Vertrauen Sie auf unsere Expertise für einen makellosen Auftritt.</p>
+        <h1 className='text-center mt-3 text-2xl justify-center items-center flex'><HandCoins size={30} /><span className='ms-2'>Ankauf</span></h1>
+        <div>
+          Wenn Sie Ihr Auto verkaufen möchten, oder eine faire Einschätzung über den aktuellen Wert Ihres Autos haben möchten, dann sind Sie bei uns genau richtig!
+        </div>
+        <hr className='border-gray-600' />
+        <h2 className='text-xl'>Ankauf Ihres Fahrzeugs</h2>
+        <p>Sie möchten Ihr Fahrzeug verkaufen? Bei uns sind Sie an der richtigen Adresse!</p>
+        <p>Wir garantieren Ihnen:</p>
+        <ul className='max-w-md ms-7 space-y-4 list-disc list-inside'>
+          <li><span className='font-bold'>Schnellen und unkomplizierten Prozess</span>
+            <ul className='max-w-md ms-7 space-y-1 list-none list-inside'>
+              <li>Vom ersten Kontakt bis zur Auszahlung – alles geht zügig und reibungslos.</li>
+            </ul>
+          </li>
+          <li><span className='font-bold'>Faire Preise</span>
+            <ul className='max-w-md ms-7 space-y-1 list-none list-inside'>
+              <li>Dank unserer umfassenden Marktkenntnis und professionellen Bewertung erhalten Sie ein Angebot, das sich sehen lassen kann.</li>
+            </ul>
+          </li>
+          <li><span className='font-bold'>Keine versteckten Kosten</span>
+            <ul className='max-w-md ms-7 space-y-1 list-none list-inside'>
+              <li>Unser Service ist transparent und für Sie völlig kostenlos.</li>
+            </ul>
+          </li>
+        </ul>
+        <hr className='border-gray-600' />
+        <h2 className='text-xl'>Einschätzung des Wertes Ihres Fahrzeugs</h2>
+        <p>Sie fragen sich, wie viel Ihr Fahrzeug aktuell wert ist? Unsere Experten helfen Ihnen dabei!</p>
+        <ul className='max-w-md ms-7 space-y-4 list-disc list-inside'>
+          <li><span className='font-bold'>Gründliche Fahrzeugbewertung</span>
+            <ul className='max-w-md ms-7 space-y-1 list-none list-inside'>
+              <li>Wir prüfen den Zustand, die Ausstattung und alle relevanten Faktoren Ihres Fahrzeugs.
+              </li>
+            </ul>
+          </li>
+          <li><span className='font-bold'>Marktbasierte Analyse</span>
+            <ul className='max-w-md ms-7 space-y-1 list-none list-inside'>
+              <li>Unsere Angebote basieren auf tagesaktuellen Marktwerten, sodass Sie sicher sein können, einen realistischen Preis zu erhalten.</li>
+            </ul>
+          </li>
+          <li><span className='font-bold'>Unverbindlich und transparent</span>
+            <ul className='max-w-md ms-7 space-y-1 list-none list-inside'>
+              <li>Die Einschätzung ist für Sie unverbindlich – es liegt ganz bei Ihnen, ob Sie unser Angebot annehmen möchten.</li>
+            </ul>
+          </li>
+        </ul>
+        <hr className='border-gray-600' />
+        <h2 className='text-xl'>Noch Fragen?</h2>
+        <p>Sie haben Fragen oder möchten uns Ihr Anliegen direkt mitteilen? Kein Problem – wir sind für Sie da! Alle nötigen Informationen zur Kontaktaufnahme finden Sie bequem <a className='underline' href="/Kontakt">hier</a> auf unserer Kontaktseite.</p>
       </div>
     </div>
   )

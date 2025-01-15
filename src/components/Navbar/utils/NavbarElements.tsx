@@ -6,31 +6,31 @@ const NavbarElements: NavbarElement[] = [
         type: "single",
         key: "Home",
         name: "Home",
-        icon: <House size={"16px"} />
+        icon: <House size={16} />
     },
     {
         type: "single",
         key: "Reinigung",
         name: "Reinigung",
-        icon: <Sparkles size={"16px"} />
+        icon: <Sparkles size={16} />
     },
     {
         type: "single",
         key: "Verkauf",
         name: "Verkauf",
-        icon: <Car size={"16px"} />
+        icon: <Car size={16} />
     },
     {
         type: "single",
         key: "Ankauf",
         name: "Ankauf",
-        icon: <HandCoins size={"16px"} />
+        icon: <HandCoins size={16} />
     },
     {
         type: "single",
         key: "Kontakt",
         name: "Kontakt",
-        icon: <Phone size={"16px"} />
+        icon: <Phone size={16} />
     },
 ]
   
