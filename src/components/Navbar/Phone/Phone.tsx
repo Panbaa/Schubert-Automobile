@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from "react";
+import { ReactNode, useState } from "react";
 import { INavbarProps } from "../Navbar";
 import { Menu, X } from "lucide-react";
 import "./Phone.css";
