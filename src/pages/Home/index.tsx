@@ -3,8 +3,8 @@ import ScrollingGallery from '../../components/ScrollingGallery/ScrollingGallery
 
 function Home() {
   return (
-    <div className='flex-grow p-4 lg:justify-center lg:flex'>
-      <div id='bodyWrapper' className='lg:w-[100rem] space-y-5'>
+    <div className='flex-grow p-4 lg:px-20 xl:px-30 2xl:px-40'>
+      <div id='bodyWrapper' className='space-y-5'>
         {/* Image as a Header for the Page */}
         <div className='w-full flex justify-center'>
           <img src="./SA-Logo-Transparent.png" alt="Logo" />
