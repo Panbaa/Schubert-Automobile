@@ -1,7 +1,7 @@
 import Home from './pages/Home'
 import Navbar from './components/Navbar/Navbar'
 import Footer from './components/Footer/Footer';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import Reinigung from './pages/Reinigung';
 import Verkauf from './pages/Verkauf';
 import Ankauf from './pages/Ankauf';
@@ -13,7 +13,7 @@ import NavbarElements from './components/Navbar/utils/NavbarElements';
 function App() {
   return (
     <div className='bg-gray-900 w-full h-full min-h-screen flex flex-col'>
-      <BrowserRouter>
+      <HashRouter>
         <Navbar elements={NavbarElements} />
         <Routes>
           <Route index element={<Home />} />
@@ -27,7 +27,7 @@ function App() {
           <Route path="*" element={<SeiteNichtGefunden />} />
         </Routes>
         <Footer />
-      </BrowserRouter>
+      </HashRouter>
     </div>
   )
 }

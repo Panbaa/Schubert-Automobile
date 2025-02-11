@@ -17,7 +17,7 @@ function Home() {
             Ob Sie ein Auto kaufen, verkaufen oder Ihr Fahrzeug einer professionellen Reinigung unterziehen möchten – wir sind für Sie da!</p>
           <h2 className='text-xl'>Reinigung</h2>
           <p>Unser erfahrenes Reinigungspersonal berät Sie gern in Ihrem Anliegen und findet mit Ihnen zusammen, die beste Lösung.</p>
-          <ScrollingGallery images={["src\\assets\\Vorher-Nachher\\Autositz.png", "src\\assets\\Vorher-Nachher\\RotesAuto.png", "src\\assets\\Vorher-Nachher\\Kofferraum.png", "src\\assets\\Vorher-Nachher\\WeisesAutoHinten.png", "src\\assets\\Vorher-Nachher\\Autotuer.png", "src\\assets\\Vorher-Nachher\\WeisesAutoVorne.png"]} />
+          <ScrollingGallery images={["./Autositz.png", "./RotesAuto.png", "./Kofferraum.png", "./WeisesAutoHinten.png", "./Autotuer.png", "./WeisesAutoVorne.png"]} />
           <p>Sehen Sie sich auf unsere <a className='underline' href="/Reinigung">Reinigungs</a>-Seite vorbei um mehr über unser umfangreiches Angebot an Reinigungen zu erfahren.</p>
           <h2 className='text-xl'>An- und Verkauf von Fahrzeugen</h2>
           <p>Bei uns können Sie einfach und unkompliziert hochwertige Neu- oder Gebrauchtwagen kaufen oder Ihr eigenes Fahrzeug bewerten lassen und verkaufen – ganz ohne versteckte Kosten. Schnell, transparent und ohne großen Aufwand!</p> 

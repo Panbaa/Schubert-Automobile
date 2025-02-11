@@ -12,7 +12,7 @@ function Reinigung() {
         </div>
         <hr className='border-gray-600' />
         <h2 className='text-xl'>Polsterreinigung</h2>
-        <ScrollingGallery images={["src\\assets\\Vorher-Nachher\\Autositz.png"]} />
+        <ScrollingGallery images={["./Autositz.png"]} />
         <p>Bei unserer professionellen Polsterreinigung setzen wir auf eine gründliche und effektive Methode, um Ihre Polster wieder strahlen zu lassen.
           Durch sorgfältiges Einschamponieren lösen wir selbst tiefsitzenden Schmutz und hartnäckige Verunreinigungen.
           Anschließend werden die Rückstände mit unseren leistungsstarken Waschsaugern restlos entfernt.
@@ -20,7 +20,7 @@ function Reinigung() {
           Vertrauen Sie auf unsere Expertise für eine porentiefe Reinigung!</p>
         <hr className='border-gray-600' />
         <h2 className='text-xl'>Innenraumreinigung</h2>
-        <ScrollingGallery images={["src\\assets\\Vorher-Nachher\\Kofferraum.png", "src\\assets\\Vorher-Nachher\\Autotuer.png"]} />
+        <ScrollingGallery images={["./Kofferraum.png", "./Autotuer.png"]} />
         <p>Neben unserer professionellen Polsterreinigung bieten wir auch eine umfassende Innenraumreinigung für Ihr Fahrzeug an.
           Dabei kümmern wir uns um alle Bereiche, um den Innenraum wieder in Bestform zu bringen.
           Ob Türen, Kunststoffe, Kofferraum, Fußraum oder der Dachhimmel – wir reinigen und pflegen jedes Detail gründlich und schonend.
@@ -28,7 +28,7 @@ function Reinigung() {
           Für ein frisches und gepflegtes Fahrerlebnis – verlassen Sie sich auf unsere Expertise!</p>
         <hr className='border-gray-600' />
         <h2 className='text-xl'>Außenreinigung</h2>
-        <ScrollingGallery images={["src\\assets\\Vorher-Nachher\\RotesAuto.png", "src\\assets\\Vorher-Nachher\\WeisesAutoHinten.png", "src\\assets\\Vorher-Nachher\\WeisesAutoVorne.png"]} />
+        <ScrollingGallery images={["./RotesAuto.png", "./WeisesAutoHinten.png", "./WeisesAutoVorne.png"]} />
         <p>Bei unserer Außenreinigung legen wir größten Wert auf Sorgfalt und Detailgenauigkeit, damit Ihr Fahrzeug in neuem Glanz erstrahlt.
           Wir kümmern uns umfassend um die Reinigung des gesamten äußeren Bereichs, von der Lackpflege bis hin zur gründlichen Reinigung der Felgen.
           Zusätzlich bieten wir professionelle Polierungen an, um den Lack zu schützen und wieder zum Strahlen zu bringen.
