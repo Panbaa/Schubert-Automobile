@@ -1,0 +1,37 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Inject environment variables
+        run: |
+          echo "VITE_MOBILEDE_USERNAME=${{ secrets.MOBILEDE_USERNAME }}" >> .env
+          echo "VITE_MOBILEDE_PASSWORD=${{ secrets.MOBILEDE_PASSWORD }}" >> .env
+          echo "VITE_MOBILEDE_SELLER_ID=${{ secrets.MOBILEDE_SELLER_ID }}" >> .env
+
+      - name: Build project
+        run: npm run build
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: dist

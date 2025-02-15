@@ -15,17 +15,19 @@ function App() {
     <div className='bg-gray-900 w-full h-full min-h-screen flex flex-col'>
       <HashRouter>
         <Navbar elements={NavbarElements} />
-        <Routes>
-          <Route index element={<Home />} />
-          <Route path="/" element={<Home />} />
-          <Route path="/Home" element={<Home />} />
-          <Route path="/Reinigung" element={<Reinigung />} />
-          <Route path="/Verkauf" element={<Verkauf />} />
-          <Route path="/Ankauf" element={<Ankauf />} />
-          <Route path="/Kontakt" element={<Kontakt />} />
-          <Route path="/Impressum" element={<Impressum />} />
-          <Route path="*" element={<SeiteNichtGefunden />} />
-        </Routes>
+        <div id="bodyContainer" className='flex-grow p-4 lg:px-20 xl:px-30 2xl:px-40'>
+          <Routes>
+            <Route index element={<Home />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/Home" element={<Home />} />
+            <Route path="/Reinigung" element={<Reinigung />} />
+            <Route path="/Verkauf" element={<Verkauf />} />
+            <Route path="/Ankauf" element={<Ankauf />} />
+            <Route path="/Kontakt" element={<Kontakt />} />
+            <Route path="/Impressum" element={<Impressum />} />
+            <Route path="*" element={<SeiteNichtGefunden />} />
+          </Routes>
+        </div>
         <Footer />
       </HashRouter>
     </div>

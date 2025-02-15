@@ -1,2 +1,0 @@
-Globaly used services like redux, flux, translatings, state-management-services in general go here.
-You should create a Folder for each service, becuase they all have different files, elements, scripts, etc. they need or generate. 
