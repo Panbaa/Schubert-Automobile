@@ -19,14 +19,9 @@ function Impressum() {
         <p>Geschäftsführer: Juliano Schubert</p>
 
         <br />
-        <p className='text-xl'>Registereintrag</p>
-        <br />
-        <p>Kommt demnächst</p>
-
-        <br />
         <p className='text-xl'>Umsatzsteuer-ID</p>
         <br />
-        <p>Kommt demnächst</p>
+        <p>DE-370427982</p>
       </div>
     </div>
   )
