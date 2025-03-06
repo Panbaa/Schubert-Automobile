@@ -29,7 +29,7 @@ const Phone = ({ elements, leftSideIcon }: IPhoneProps) => {
                 <p className="ms-3 text-white text-xl">Schubert Automobile</p>
                 <div className="h-full flex items-center justify-end">
                     <div>
-                        <button onClick={handleButtonClick} >
+                        <button onClick={handleButtonClick} style={{color: "white"}}>
                             {isOpen ? <X /> : <Menu />}
                         </button>
                     </div>

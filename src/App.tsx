@@ -12,7 +12,7 @@ import NavbarElements from './components/Navbar/utils/NavbarElements';
 
 function App() {
   return (
-    <div className='bg-gray-900 w-full h-full min-h-screen flex flex-col'>
+    <div className='bg-zinc-900 w-full h-full min-h-screen flex flex-col'>
       <HashRouter>
         <Navbar elements={NavbarElements} />
         <div id="bodyContainer" className='flex-grow p-4 lg:px-20 xl:px-30 2xl:px-40'>
