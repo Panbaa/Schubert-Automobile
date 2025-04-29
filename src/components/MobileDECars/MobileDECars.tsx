@@ -73,7 +73,11 @@ const MobileDECars = () => {
   useEffect(() => {
     const fetchCars = async () => {
       try {
-        const response = await axios.get('/api/search-api/search', {
+        const baseUrl = import.meta.env.PROD 
+          ? 'https://services.mobile.de/search-api/search'
+          : '/api/search-api/search';
+
+        const response = await axios.get(baseUrl, {
           params: {
             customerNumber: '864291'
           },

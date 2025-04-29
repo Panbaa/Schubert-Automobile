@@ -28,7 +28,6 @@ jobs:
         run: |
           echo "VITE_MOBILEDE_USERNAME=${{ secrets.MOBILEDE_USERNAME }}" >> .env
           echo "VITE_MOBILEDE_PASSWORD=${{ secrets.MOBILEDE_PASSWORD }}" >> .env
-          echo "VITE_MOBILEDE_SELLER_ID=${{ secrets.MOBILEDE_SELLER_ID }}" >> .env
 
       - name: Build project
         run: npm run build
