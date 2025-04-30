@@ -51,8 +51,6 @@ const MobileDECars = () => {
       const gearbox = gearboxElement?.getElementsByTagNameNS('http://services.mobile.de/schema/resource', 'local-description')[0]?.textContent || "";
       const fuelType = fuelTypeElement?.getElementsByTagNameNS('http://services.mobile.de/schema/resource', 'local-description')[0]?.textContent || "";
 
-      console.error('newHuAu feature found:', hasNewHuAu);
-
       const car = {
         title: `${make} ${modelDescription}`,
         price: parseFloat(priceElement.getAttribute('value') || '0'),
@@ -73,22 +71,16 @@ const MobileDECars = () => {
   useEffect(() => {
     const fetchCars = async () => {
       try {
-        const baseUrl = import.meta.env.PROD 
-          ? 'https://services.mobile.de/search-api/search'
-          : '/api/search-api/search';
-
-        const response = await axios.get(baseUrl, {
+        const proxyUrl = 'https://mobile-de-proxy.your-worker-subdomain.workers.dev';  // You'll need to replace this with your actual worker URL
+        
+        const response = await axios.get(proxyUrl, {
           params: {
             customerNumber: '864291'
           },
           headers: {
             'Accept': 'application/vnd.de.mobile.api+json'
           },
-          auth: {
-            username: import.meta.env.VITE_MOBILEDE_USERNAME,
-            password: import.meta.env.VITE_MOBILEDE_PASSWORD,
-          },
-          responseType: 'text' // Get response as text to parse XML
+          responseType: 'text'
         });
 
         const parsedCars = parseXMLResponse(response.data);
@@ -105,9 +97,9 @@ const MobileDECars = () => {
     <div className="mobilede-cars">
       <div className='pb-10'>
         {cars.length === 0 ? (
-          <p>Leider haben wir aktuell keine Fahrzeuge im Angebot. <br /> Die tatsächlichen Angebote können allerdings von den Online-Angebote abweichen, also schauen Sie gerne persönlich bei uns vorbei.</p>
+          <p>Leider haben wir aktuell keine Fahrzeuge im Angebot. <br />Das tatsächliche Angebot kann vom Online-Angebot abweichen, also schauen Sie gerne persönlich bei uns vorbei.</p>
         ) : (
-          <p>Hier finden Sie eine auswahl unseres Online-Angebots an Fahrzeugen. <br /> Das tatsächliche Angebot kann vom Online-Angebot abweichen, also schauen Sie gerne persönlich bei uns vorbei.</p>
+          <p>Hier finden Sie eine auswahl unseres Online-Angebots an Fahrzeugen. <br />Das tatsächliche Angebot kann vom Online-Angebot abweichen, also schauen Sie gerne persönlich bei uns vorbei.</p>
         )}
       </div>
       <div className="car-list flex flex-wrap justify-center gap-4">
