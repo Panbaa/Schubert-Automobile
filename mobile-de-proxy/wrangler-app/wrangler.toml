@@ -1,0 +1,7 @@
+name = "wrangler-app"
+main = "src/index.ts"
+compatibility_date = "2025-05-19"
+
+[vars]
+# You can define environment variables here, but DO NOT put secrets here
+# Secrets should be set using `wrangler secret put`
