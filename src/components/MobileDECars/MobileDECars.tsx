@@ -6,68 +6,62 @@ const MobileDECars = () => {
 
   const [cars, setCars] = useState<Car[]>([]);
 
-  const formatDate = (dateString?: string | null) => {
-    if (!dateString) return undefined;
-    const [year, month] = dateString.split('-');
-    return `${month}/${year}`;
-  };
+  // const formatDate = (dateString?: string | null) => {
+  //   if (!dateString) return undefined;
+  //   const [year, month] = dateString.split('-');
+  //   return `${month}/${year}`;
+  // };
 
-  const formatePrice = (price: number | undefined) => {
-    if (price === undefined) return undefined;
-    return `${price.toLocaleString('de-DE', { style: 'currency', currency: 'EUR' })}`;
-  };    
+  // const formatePrice = (price: number | undefined) => {
+  //   if (price === undefined) return undefined;
+  //   return `${price.toLocaleString('de-DE', { style: 'currency', currency: 'EUR' })}`;
+  // };    
 
-  const parseXMLResponse = (xmlString: string): Car[] => {
+  const parseCarsFromXML = (xmlString: string): Car[] => {
+    console.log('Parsing XML...');
+    
     const parser = new DOMParser();
-    const xmlDoc = parser.parseFromString(xmlString, 'text/xml');
+    const xml = parser.parseFromString(xmlString, "application/xml");
+    const ads = Array.from(xml.getElementsByTagName("ad:ad"));
 
-    const adElements = xmlDoc.getElementsByTagNameNS('http://services.mobile.de/schema/ad', 'ad');
-
-    return Array.from(adElements).map(adElement => {
-      // Using getElementsByTagNameNS to handle namespaced elements
-      const makeElement = adElement.getElementsByTagNameNS('http://services.mobile.de/schema/ad', 'make')[0];
-      const modelDescriptionElement = adElement.getElementsByTagNameNS('http://services.mobile.de/schema/ad', 'model-description')[0];
-      const priceElement = adElement.getElementsByTagNameNS('http://services.mobile.de/schema/ad', 'consumer-price-amount')[0];
-      const detailPageElement = adElement.getElementsByTagNameNS('http://services.mobile.de/schema/ad', 'detail-page')[0];
-      const images = adElement.getElementsByTagNameNS('http://services.mobile.de/schema/ad', 'representation');
-      const firstRegistrationElement = adElement.getElementsByTagNameNS('http://services.mobile.de/schema/ad', 'first-registration')[0];
-      const mileageElement = adElement.getElementsByTagNameNS('http://services.mobile.de/schema/ad', 'mileage')[0];
-      const generalInspectionElement = adElement.getElementsByTagNameNS('http://services.mobile.de/schema/ad', 'general-inspection')[0];
-      const features = adElement.getElementsByTagNameNS('http://services.mobile.de/schema/ad', 'feature');
-      const powerElement = adElement.getElementsByTagNameNS('http://services.mobile.de/schema/ad', 'power')[0];
-      const gearboxElement = adElement.getElementsByTagNameNS('http://services.mobile.de/schema/ad', 'gearbox')[0];
-      const fuelTypeElement = adElement.getElementsByTagNameNS('http://services.mobile.de/schema/ad', 'fuel')[0];
-      
-      const xxxlImage = Array.from(images).find(img => img.getAttribute('size') === 'XXXL');
-      const make = makeElement?.getElementsByTagNameNS('http://services.mobile.de/schema/resource', 'local-description')[0]?.textContent || "";
-      const modelDescription = modelDescriptionElement?.getAttribute('value') || "";
-      const mileage = mileageElement?.getAttribute('value') || "0 km";
-      const generalInspectionDate = generalInspectionElement?.getAttribute('value') || "";
-      const hasNewHuAu = Array.from(features).some(feature => 
-        feature.getAttribute('key') === 'HU_AU_NEU'
-      );
-      const power = powerElement?.getAttribute('value') || "";
-      const gearbox = gearboxElement?.getElementsByTagNameNS('http://services.mobile.de/schema/resource', 'local-description')[0]?.textContent || "";
-      const fuelType = fuelTypeElement?.getElementsByTagNameNS('http://services.mobile.de/schema/resource', 'local-description')[0]?.textContent || "";
-
-      const car = {
-        title: `${make} ${modelDescription}`,
-        price: parseFloat(priceElement.getAttribute('value') || '0'),
-        detailPageUrl: detailPageElement?.getAttribute('url') || undefined,
-        images: xxxlImage ? [{ xxxl: xxxlImage.getAttribute('url') || undefined }] : [],
-        firstRegistrationDate: formatDate(firstRegistrationElement.getAttribute('value')),
-        mileage: parseInt(mileage).toLocaleString('de-DE') + " km",
-        generalInspectionDate: formatDate(generalInspectionDate),
-        newHuAu: hasNewHuAu ? "true" : "false",
-        power: power + " kW / " + Math.round(parseInt(power) * 1.36) + " PS",
-        gearbox: gearbox,
-        fuelType: fuelType,
+    return ads.map((ad) => {
+      const getText = (tagName: string, parent: Element = ad): string => {
+        const el = parent.getElementsByTagName(tagName)[0];
+        return el?.textContent?.trim() || "";
       };
-      return car;
+
+      const detailPageUrl = ad.getElementsByTagName("ad:detail-page")[0]?.getAttribute("url") || "";
+
+      const imageUrl = ad.getElementsByTagName("ad:image")[0]
+        ?.getElementsByTagName("ad:representation")
+        ?.namedItem("XL")
+        ?.getAttribute("url") ||
+        ad.getElementsByTagName("ad:image")[0]
+          ?.getElementsByTagName("ad:representation")[0]
+          ?.getAttribute("url") || "";
+
+      const specifics = ad.getElementsByTagName("ad:specifics")[0];
+
+      return {
+        detailPageUrl,
+        images: imageUrl,
+        price: parseFloat(ad.getElementsByTagName("ad:consumer-price-amount")[0]?.getAttribute("value") || "0"),
+        make: getText("ad:make"),
+        modelDescription: ad.getElementsByTagName("ad:model-description")[0]?.getAttribute("value") || "",
+        title: `${getText("ad:make")} ${getText("ad:model")} ${ad.getElementsByTagName("ad:model-description")[0]?.getAttribute("value") || ""}`,
+        firstRegistrationDate: specifics?.getElementsByTagName("ad:first-registration")[0]?.getAttribute("value") || "",
+        generalInspectionDate: getText("resource:local-description", ad.getElementsByTagName("ad:feature").namedItem("HU_AU_NEU") || ad),
+        newHuAu: ad.getElementsByTagName("ad:feature").namedItem("HU_AU_NEU") ? "true" : "false",
+        mileage: parseInt(specifics?.getElementsByTagName("ad:mileage")[0]?.getAttribute("value") || "0"),
+        power: parseInt(specifics?.getElementsByTagName("ad:power")[0]?.getAttribute("value") || "0"),
+        gearbox: getText("ad:gearbox"),
+        fuelType: getText("ad:fuel")
+      };
     });
-  };
+  }
 
   useEffect(() => {
+    console.log('Fetching cars...');
     const fetchCars = async () => {
       try {
         const response = await fetch('https://wrangler-app.mobile-de-proxy-panba.workers.dev?customerNumber=864291', {
@@ -79,9 +73,9 @@ const MobileDECars = () => {
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
-        
+
         const data = await response.text();
-        const parsedCars = parseXMLResponse(data);
+        const parsedCars = parseCarsFromXML(data);
         setCars(parsedCars);
       } catch (error) {
         console.error('Error fetching cars:', error);
@@ -90,6 +84,8 @@ const MobileDECars = () => {
 
     fetchCars();
   }, []);
+
+  const formatePrice = (price: number) => `${price.toLocaleString("de-DE")} €`;
 
   return (
     <div className="mobilede-cars">
@@ -102,26 +98,27 @@ const MobileDECars = () => {
       </div>
       <div className="car-list flex flex-wrap justify-center gap-4">
         {cars.map((car, index) => (
-          <a key={index} 
-             className="car-item bg-zinc-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] hover:bg-zinc-700"
-             href={car.detailPageUrl} 
-             target="_blank" 
-             rel="noopener noreferrer"
+          <a
+            key={index}
+            className="car-item bg-zinc-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] hover:bg-zinc-700"
+            href={car.detailPageUrl}
+            target="_blank"
+            rel="noopener noreferrer"
           >
             <div className="relative">
-              <img 
-                className="w-full h-48 object-cover" 
-                src={car.images?.[0]?.xxxl} 
-                alt={`${car.make} ${car.modelDescription}`} 
+              <img
+                className="w-full h-48 object-cover"
+                src={car.images}
+                alt={`${car.make} ${car.modelDescription}`}
               />
               <div className="absolute top-0 right-0 m-2 px-3 py-1 bg-zinc-900/80 rounded-full text-white">
                 {formatePrice(car.price)}
               </div>
             </div>
-            
+
             <div className="p-4 space-y-3">
               <h2 className="text-xl font-semibold text-white">{car.title}</h2>
-              
+
               <div className="grid grid-cols-2 gap-2 text-sm text-gray-300">
                 <div className="flex items-center gap-1">
                   <span className="text-gray-400">Erstzulassung:</span>
@@ -133,11 +130,11 @@ const MobileDECars = () => {
                 </div>
                 <div className="flex items-center gap-1">
                   <span className="text-gray-400">Kilometer:</span>
-                  <span>{car.mileage}</span>
+                  <span>{car.mileage.toLocaleString()} km</span>
                 </div>
                 <div className="flex items-center gap-1">
                   <span className="text-gray-400">Leistung:</span>
-                  <span>{car.power}</span>
+                  <span>{car.power} PS</span>
                 </div>
                 <div className="flex items-center gap-1">
                   <span className="text-gray-400">Getriebe:</span>
