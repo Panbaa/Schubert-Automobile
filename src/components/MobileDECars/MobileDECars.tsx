@@ -70,7 +70,7 @@ const MobileDECars = () => {
   useEffect(() => {
     const fetchCars = async () => {
       try {
-        const response = await fetch('https://wrangler-app.mobile-de-proxy-panba.workers.dev/?customerNumber=864291', {
+        const response = await fetch('https://wrangler-app.mobile-de-proxy-panba.workers.dev?customerNumber=864291', {
           headers: {
             'Accept': 'application/vnd.de.mobile.api+xml'
           }

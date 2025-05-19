@@ -33,8 +33,12 @@ export default {
       // Create auth header
       const authHeader = `Basic ${btoa(`${env.MOBILEDE_USERNAME}:${env.MOBILEDE_PASSWORD}`)}`;
 
+      // Get the URL parameters from the request
+      const url = new URL(request.url);
+      const customerNumber = url.searchParams.get('customerNumber') || '864291';
+
       // Forward the request to Mobile.de API
-      const apiResponse = await fetch('https://services.mobile.de/search-api/search?customerNumber=864291', {
+      const apiResponse = await fetch(`https://services.mobile.de/search-api/search?customerNumber=${customerNumber}`, {
         headers: {
           'Authorization': authHeader,
           'Accept': 'application/vnd.de.mobile.api+xml'
