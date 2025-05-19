@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import axios from 'axios';
 import { Car } from '../../lib/types';
 import './MobileDECars.css';
 
@@ -71,19 +70,18 @@ const MobileDECars = () => {
   useEffect(() => {
     const fetchCars = async () => {
       try {
-        const proxyUrl = 'https://mobile-de-proxy.your-worker-subdomain.workers.dev';  // You'll need to replace this with your actual worker URL
-        
-        const response = await axios.get(proxyUrl, {
-          params: {
-            customerNumber: '864291'
-          },
+        const response = await fetch('https://wrangler-app.mobile-de-proxy-panba.workers.dev/?customerNumber=864291', {
           headers: {
-            'Accept': 'application/vnd.de.mobile.api+json'
-          },
-          responseType: 'text'
+            'Accept': 'application/vnd.de.mobile.api+xml'
+          }
         });
 
-        const parsedCars = parseXMLResponse(response.data);
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const data = await response.text();
+        const parsedCars = parseXMLResponse(data);
         setCars(parsedCars);
       } catch (error) {
         console.error('Error fetching cars:', error);
