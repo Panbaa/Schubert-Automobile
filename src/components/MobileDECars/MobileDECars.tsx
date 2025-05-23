@@ -17,9 +17,6 @@ const MobileDECars = () => {
     const parser = new DOMParser();
     const xmlDoc = parser.parseFromString(xmlString, 'text/xml');
     const carElements = xmlDoc.getElementsByTagName('ad');
-    console.log('====================================');
-    console.log('carElements', carElements);
-    console.log('====================================');
 
     const cars: Car[] = Array.from(carElements).map((carElement) => {
       return {
@@ -65,10 +62,6 @@ const MobileDECars = () => {
 
     fetchCars();
   }, []);
-
-  useEffect(() => {
-    console.log('Cars fetched:', cars);
-  }, [cars]);
 
   const formatePrice = (price: number) => `${price.toLocaleString("de-DE")} €`;
 

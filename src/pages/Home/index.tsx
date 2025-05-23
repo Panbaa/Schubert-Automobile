@@ -60,7 +60,7 @@ function Home() {
         <section className="bg-zinc-800/50 rounded-2xl p-8 backdrop-blur-sm">
           <h2 className='text-2xl font-bold text-white mb-6'>An- und Verkauf von Fahrzeugen</h2>
           <p className='text-zinc-300 mb-6'>
-            Bei uns können Sie einfach und unkompliziert hochwertige Neu- oder Gebrauchtwagen 
+            Bei uns können Sie einfach und unkompliziert hochwertige Gebrauchtwagen 
             kaufen oder Ihr eigenes Fahrzeug bewerten lassen und verkaufen – ganz ohne 
             versteckte Kosten. Schnell, transparent und ohne großen Aufwand!
           </p>
