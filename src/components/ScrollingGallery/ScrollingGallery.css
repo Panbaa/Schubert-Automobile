@@ -11,12 +11,23 @@
     gap: 10px;
     overflow-x: scroll;
     scroll-behavior: smooth;
-    padding: 10px;
-    scrollbar-width: none; /* Hide scrollbar for Firefox */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    padding: 1rem 0.5rem;
   }
   
   .scrolling-gallery::-webkit-scrollbar {
-    display: none; /* Hide scrollbar for Chrome, Safari, and Edge */
+    display: none;
+  }
+  
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
   }
   
   .gallery-item {
@@ -141,4 +152,23 @@
 
 .fullscreen-nav:hover {
   background: rgba(255, 255, 255, 0.6);
+}
+
+/* Disable hover effects on mobile */
+@media (hover: none) {
+  .group:hover img {
+    transform: none;
+  }
+  
+  .group:hover .absolute {
+    opacity: 0;
+  }
+}
+
+/* Improve touch targets on mobile */
+@media (max-width: 640px) {
+  .scrolling-gallery {
+    gap: 1rem;
+    padding: 0.5rem;
+  }
 }

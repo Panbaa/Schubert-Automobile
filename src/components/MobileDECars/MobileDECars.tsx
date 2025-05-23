@@ -34,7 +34,7 @@ const MobileDECars = () => {
         newHuAu: carElement.getElementsByTagName('newHuAu')[0]?.textContent || '',
         mileage: parseInt(carElement.getElementsByTagName('mileage')[0].textContent || '0', 10),
         power: parseInt(carElement.getElementsByTagName('power')[0].textContent || '0', 10),
-        gearbox: carElement.getElementsByTagName('gearbox')[0].textContent === 'AUTOMATIC_GEAR' ? 'Automatik' : 'Schaltgetriebe',
+        gearbox: carElement.getElementsByTagName('fuel')[0].textContent === 'AUTOMATIC_GEAR' ? 'Automatik' : 'Schaltgetriebe',
         fuelType: carElement.getElementsByTagName('fuel')[0].textContent == 'PETROL' ? 'Benzin' : carElement.getElementsByTagName('fuel')[0].textContent == 'DIESEL' ? 'Diesel' : 'Elektrisch',
       };
     });
@@ -70,66 +70,90 @@ const MobileDECars = () => {
     console.log('Cars fetched:', cars);
   }, [cars]);
 
-
   const formatePrice = (price: number) => `${price.toLocaleString("de-DE")} €`;
 
-  let carCount = cars.length;
   return (
-    <div className="mobilede-cars">
-      <div className='pb-10'>
+    <div className="mobilede-cars container mx-auto px-4 py-12">
+      <div className='pb-12 text-center'>
         {cars.length === 0 ? (
-          <p>Leider haben wir aktuell keine Fahrzeuge im Angebot. <br />Das tatsächliche Angebot kann vom Online-Angebot abweichen, also schauen Sie gerne persönlich bei uns vorbei.</p>
+          <div className="space-y-4">
+            <h2 className="text-3xl font-bold text-zinc-800 dark:text-white">Keine Fahrzeuge verfügbar</h2>
+            <p className="text-lg text-zinc-600 dark:text-zinc-300">
+              Leider haben wir aktuell keine Fahrzeuge im Angebot. <br />
+              Das tatsächliche Angebot kann vom Online-Angebot abweichen, also schauen Sie gerne persönlich bei uns vorbei.
+            </p>
+          </div>
         ) : (
-          <p>Hier finden Sie eine auswahl unseres Online-Angebots an Fahrzeugen. <br />Das tatsächliche Angebot kann vom Online-Angebot abweichen, also schauen Sie gerne persönlich bei uns vorbei.</p>
+          <div className="space-y-4">
+            <p className="text-lg text-zinc-600 dark:text-zinc-300">
+              Hier finden Sie eine Auswahl unseres Online-Angebots an Fahrzeugen. <br />
+              Das tatsächliche Angebot kann vom Online-Angebot abweichen, also schauen Sie gerne persönlich bei uns vorbei.
+            </p>
+          </div>
         )}
       </div>
-      <div className="car-list flex flex-wrap justify-center gap-4">
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {cars.map((car, index) => (
           <a
             key={index}
-            className="car-item bg-zinc-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] hover:bg-zinc-700"
+            className="group relative bg-white dark:bg-zinc-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 ease-in-out transform hover:-translate-y-1"
             href={car.detailPageUrl}
             target="_blank"
             rel="noopener noreferrer"
           >
-            <div className="relative">
+            <div className="aspect-w-16 aspect-h-9 relative overflow-hidden">
               <img
-                className="w-full h-48 object-cover"
+                className="w-full h-full object-cover transform transition-transform duration-700"
                 src={car.image}
                 alt={`${car.make} ${car.modelDescription}`}
               />
-              <div className="absolute top-0 right-0 m-2 px-3 py-1 bg-zinc-900/80 rounded-full text-white">
-                {formatePrice(car.price)}
+              <div className="absolute top-4 right-4">
+                <span className="px-4 py-2 bg-zinc-900/90 rounded-full text-white font-semibold shadow-lg">
+                  {formatePrice(car.price)}
+                </span>
               </div>
             </div>
 
-            <div className="p-4 space-y-3">
-              <h2 className="text-xl font-semibold text-white">{car.title}</h2>
+            <div className="p-6 space-y-4">
+              <h2 className="text-xl font-bold text-zinc-800 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
+                {car.title}
+              </h2>
 
-              <div className="grid grid-cols-2 gap-2 text-sm text-gray-300">
-                <div className="flex items-center gap-1">
-                  <span className="text-gray-400">Erstzulassung:</span>
-                  <span>{car.firstRegistrationDate}</span>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="space-y-3">
+                  <div className="flex flex-col">
+                    <span className="text-sm text-zinc-500 dark:text-zinc-400">Erstzulassung</span>
+                    <span className="font-medium text-zinc-800 dark:text-zinc-200">{car.firstRegistrationDate}</span>
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="text-sm text-zinc-500 dark:text-zinc-400">Kilometer</span>
+                    <span className="font-medium text-zinc-800 dark:text-zinc-200">{car.mileage.toLocaleString()} km</span>
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="text-sm text-zinc-500 dark:text-zinc-400">Getriebe</span>
+                    <span className="font-medium text-zinc-800 dark:text-zinc-200">{car.gearbox}</span>
+                  </div>
                 </div>
-                <div className="flex items-center gap-1">
-                  <span className="text-gray-400">HU/AU:</span>
-                  <span>{car.newHuAu === "true" ? "Neu" : car.generalInspectionDate}</span>
-                </div>
-                <div className="flex items-center gap-1">
-                  <span className="text-gray-400">Kilometer:</span>
-                  <span>{car.mileage.toLocaleString()} km</span>
-                </div>
-                <div className="flex items-center gap-1">
-                  <span className="text-gray-400">Leistung:</span>
-                  <span>{car.power} PS</span>
-                </div>
-                <div className="flex items-center gap-1">
-                  <span className="text-gray-400">Getriebe:</span>
-                  <span>{car.gearbox}</span>
-                </div>
-                <div className="flex items-center gap-1">
-                  <span className="text-gray-400">Kraftstoff:</span>
-                  <span>{car.fuelType}</span>
+                <div className="space-y-3">
+                  <div className="flex flex-col">
+                    <span className="text-sm text-zinc-500 dark:text-zinc-400">HU/AU</span>
+                    <span className="font-medium text-zinc-800 dark:text-zinc-200">
+                      {car.newHuAu === "true" ? (
+                        <span className="text-green-600 dark:text-green-400">Neu</span>
+                      ) : (
+                        car.generalInspectionDate
+                      )}
+                    </span>
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="text-sm text-zinc-500 dark:text-zinc-400">Leistung</span>
+                    <span className="font-medium text-zinc-800 dark:text-zinc-200">{car.power} PS</span>
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="text-sm text-zinc-500 dark:text-zinc-400">Kraftstoff</span>
+                    <span className="font-medium text-zinc-800 dark:text-zinc-200">{car.fuelType}</span>
+                  </div>
                 </div>
               </div>
             </div>

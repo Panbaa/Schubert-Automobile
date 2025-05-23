@@ -16,19 +16,22 @@ const Desktop = ({ elements, leftSideIcon }: IDesktopProps ) => {
 
     return (
         <div className="w-full h-full hidden justify-start lg:flex flex-row items-center">
-            <div id="desktopNavbarIcon" className="h-full flex items-center justify-start ml-8 ">
-                {leftSideIcon} 
+            <div id="desktopNavbarIcon" className="h-full flex items-center justify-start ml-8 hover:scale-105 transition-transform duration-300">
+                {leftSideIcon}
             </div>
-                <p className="ms-3 text-white text-xl">Schubert Automobile</p>
-            <div className="h-full pr-8 ms-auto me-0 flex items-center justify-end gap-4">
-                {elements.map((element) => {
-                    return(
-                        <button onClick={() => handleNavigation(element.name)} key={element.key} className="p-2 text-sm font-medium flex gap-1 items-center border-b-2 border-b-transparent transition ease-in-out hover:scale-125 active:bg-gray-900 text-white active:rounded">
-                            {element.icon && <span>{element.icon}</span>}
-                            <span>{element.name}</span>
-                        </button>
-                    );
-                })}
+            <p className="ms-3 text-white text-xl font-medium">Schubert Automobile</p>
+            <div className="h-full pr-8 ms-auto me-0 flex items-center justify-end gap-6">
+                {elements.map((element) => (
+                    <button 
+                        onClick={() => handleNavigation(element.name)} 
+                        key={element.key} 
+                        className="relative p-2 text-sm font-medium flex gap-2 items-center text-zinc-300 hover:text-white transition-all duration-300 group"
+                    >
+                        {element.icon && <span className="transform group-hover:scale-110 transition-transform duration-300">{element.icon}</span>}
+                        <span>{element.name}</span>
+                        <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-500 group-hover:w-full transition-all duration-300"></span>
+                    </button>
+                ))}
             </div>
         </div>
     );
