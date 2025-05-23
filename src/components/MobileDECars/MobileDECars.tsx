@@ -6,67 +6,48 @@ const MobileDECars = () => {
 
   const [cars, setCars] = useState<Car[]>([]);
 
-  // const formatDate = (dateString?: string | null) => {
-  //   if (!dateString) return undefined;
-  //   const [year, month] = dateString.split('-');
-  //   return `${month}/${year}`;
-  // };
-
-  // const formatePrice = (price: number | undefined) => {
-  //   if (price === undefined) return undefined;
-  //   return `${price.toLocaleString('de-DE', { style: 'currency', currency: 'EUR' })}`;
-  // };    
+  const formatDate = (dateString: string | null) => {
+    if (!dateString) return undefined;
+    const year= dateString.substring(0, 4);
+    const month= dateString.substring(4, 6);
+    return `${month}/${year}`;
+  };
 
   const parseCarsFromXML = (xmlString: string): Car[] => {
-    console.log('Parsing XML...');
-    
     const parser = new DOMParser();
-    const xml = parser.parseFromString(xmlString, "application/xml");
-    const ads = Array.from(xml.getElementsByTagName("ad:ad"));
+    const xmlDoc = parser.parseFromString(xmlString, 'text/xml');
+    const carElements = xmlDoc.getElementsByTagName('ad');
+    console.log('====================================');
+    console.log('carElements', carElements);
+    console.log('====================================');
 
-    return ads.map((ad) => {
-      const getText = (tagName: string, parent: Element = ad): string => {
-        const el = parent.getElementsByTagName(tagName)[0];
-        return el?.textContent?.trim() || "";
-      };
-
-      const detailPageUrl = ad.getElementsByTagName("ad:detail-page")[0]?.getAttribute("url") || "";
-
-      const imageUrl = ad.getElementsByTagName("ad:image")[0]
-        ?.getElementsByTagName("ad:representation")
-        ?.namedItem("XL")
-        ?.getAttribute("url") ||
-        ad.getElementsByTagName("ad:image")[0]
-          ?.getElementsByTagName("ad:representation")[0]
-          ?.getAttribute("url") || "";
-
-      const specifics = ad.getElementsByTagName("ad:specifics")[0];
-
+    const cars: Car[] = Array.from(carElements).map((carElement) => {
       return {
-        detailPageUrl,
-        images: imageUrl,
-        price: parseFloat(ad.getElementsByTagName("ad:consumer-price-amount")[0]?.getAttribute("value") || "0"),
-        make: getText("ad:make"),
-        modelDescription: ad.getElementsByTagName("ad:model-description")[0]?.getAttribute("value") || "",
-        title: `${getText("ad:make")} ${getText("ad:model")} ${ad.getElementsByTagName("ad:model-description")[0]?.getAttribute("value") || ""}`,
-        firstRegistrationDate: specifics?.getElementsByTagName("ad:first-registration")[0]?.getAttribute("value") || "",
-        generalInspectionDate: getText("resource:local-description", ad.getElementsByTagName("ad:feature").namedItem("HU_AU_NEU") || ad),
-        newHuAu: ad.getElementsByTagName("ad:feature").namedItem("HU_AU_NEU") ? "true" : "false",
-        mileage: parseInt(specifics?.getElementsByTagName("ad:mileage")[0]?.getAttribute("value") || "0"),
-        power: parseInt(specifics?.getElementsByTagName("ad:power")[0]?.getAttribute("value") || "0"),
-        gearbox: getText("ad:gearbox"),
-        fuelType: getText("ad:fuel")
+        detailPageUrl: carElement.getElementsByTagName('detailPageUrl')[0].textContent || '',
+        image: carElement.getElementsByTagName('xxxl')[0].textContent || '',
+        price: parseFloat(carElement.getElementsByTagName('price')[0].textContent || '0'),
+        make: carElement.getElementsByTagName('make')[0].textContent || '',
+        modelDescription: carElement.getElementsByTagName('modelDescription')[0].textContent || '',
+        title: carElement.getElementsByTagName('modelDescription')[0].textContent || '',
+        firstRegistrationDate: formatDate(carElement.getElementsByTagName('firstRegistration')[0].textContent) || '',
+        generalInspectionDate: formatDate(carElement.getElementsByTagName('generalInspection')[0]?.textContent) || '',
+        newHuAu: carElement.getElementsByTagName('newHuAu')[0]?.textContent || '',
+        mileage: parseInt(carElement.getElementsByTagName('mileage')[0].textContent || '0', 10),
+        power: parseInt(carElement.getElementsByTagName('power')[0].textContent || '0', 10),
+        gearbox: carElement.getElementsByTagName('gearbox')[0].textContent === 'AUTOMATIC_GEAR' ? 'Automatik' : 'Schaltgetriebe',
+        fuelType: carElement.getElementsByTagName('fuel')[0].textContent == 'PETROL' ? 'Benzin' : carElement.getElementsByTagName('fuel')[0].textContent == 'DIESEL' ? 'Diesel' : 'Elektrisch',
       };
     });
+
+    return cars;
   }
 
   useEffect(() => {
-    console.log('Fetching cars...');
     const fetchCars = async () => {
       try {
         const response = await fetch('https://wrangler-app.mobile-de-proxy-panba.workers.dev?customerNumber=864291', {
           headers: {
-            'Accept': 'application/vnd.de.mobile.api+xml'
+            'Accept': 'application/vnd.de.mobile.api+json'
           }
         });
 
@@ -85,8 +66,14 @@ const MobileDECars = () => {
     fetchCars();
   }, []);
 
+  useEffect(() => {
+    console.log('Cars fetched:', cars);
+  }, [cars]);
+
+
   const formatePrice = (price: number) => `${price.toLocaleString("de-DE")} €`;
 
+  let carCount = cars.length;
   return (
     <div className="mobilede-cars">
       <div className='pb-10'>
@@ -108,7 +95,7 @@ const MobileDECars = () => {
             <div className="relative">
               <img
                 className="w-full h-48 object-cover"
-                src={car.images}
+                src={car.image}
                 alt={`${car.make} ${car.modelDescription}`}
               />
               <div className="absolute top-0 right-0 m-2 px-3 py-1 bg-zinc-900/80 rounded-full text-white">

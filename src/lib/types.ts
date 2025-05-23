@@ -11,7 +11,7 @@ export type NavbarElement = INavbarElement;
 
 export interface ICar {
     detailPageUrl: string;
-    images: string;
+    image: string;
     price: number;
     make: string;
     modelDescription: string;
