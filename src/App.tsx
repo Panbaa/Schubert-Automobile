@@ -2,7 +2,6 @@ import Home from './pages/Home'
 import Navbar from './components/Navbar/Navbar'
 import Footer from './components/Footer/Footer';
 import { HashRouter, Routes, Route } from "react-router-dom";
-import Reinigung from './pages/Reinigung';
 import Verkauf from './pages/Verkauf';
 import Ankauf from './pages/Ankauf';
 import Kontakt from './pages/Kontakt';
@@ -20,7 +19,6 @@ function App() {
             <Route index element={<Home />} />
             <Route path="/" element={<Home />} />
             <Route path="/Home" element={<Home />} />
-            <Route path="/Reinigung" element={<Reinigung />} />
             <Route path="/Verkauf" element={<Verkauf />} />
             <Route path="/Ankauf" element={<Ankauf />} />
             <Route path="/Kontakt" element={<Kontakt />} />

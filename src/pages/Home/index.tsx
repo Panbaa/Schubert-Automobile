@@ -1,5 +1,4 @@
 import './Home.css'
-import ScrollingGallery from '../../components/ScrollingGallery/ScrollingGallery'
 
 function Home() {
   return (
@@ -18,41 +17,9 @@ function Home() {
         <section className="text-center">
           <h1 className='text-3xl font-bold text-white mb-6'>Willkommen bei Schubert Automobile</h1>
           <p className='text-lg text-zinc-300 max-w-3xl mx-auto'>
-            Bei uns finden Sie nicht nur eine große Auswahl an hochwertigen Gebrauchtwagen, 
-            sondern auch einen erstklassigen Service, der keine Wünsche offen lässt. 
-            Ob Sie ein Auto kaufen, verkaufen oder Ihr Fahrzeug einer professionellen 
-            Reinigung unterziehen möchten – wir sind für Sie da!
-          </p>
-        </section>
-
-        {/* Services Sections */}
-        <section className="bg-zinc-800/50 rounded-2xl p-8 backdrop-blur-sm">
-          <h2 className='text-2xl font-bold text-white mb-6'>Professionelle Reinigung</h2>
-          <p className='text-zinc-300 mb-6'>
-            Unser erfahrenes Reinigungspersonal berät Sie gern in Ihrem Anliegen 
-            und findet mit Ihnen zusammen die beste Lösung.
-          </p>
-          <div className="mb-6">
-            <ScrollingGallery 
-              images={[
-                "./Autositz.png", 
-                "./RotesAuto.png", 
-                "./Kofferraum.png", 
-                "./WeisesAutoHinten.png", 
-                "./Autotuer.png", 
-                "./WeisesAutoVorne.png"
-              ]} 
-            />
-          </div>
-          <p className='text-zinc-300'>
-            Sehen Sie sich auf unserer{' '}
-            <a 
-              href="/#/Reinigung" 
-              className='text-blue-400 hover:text-blue-300 transition-colors duration-300'
-            >
-              Reinigungs
-            </a>
-            -Seite um, um mehr über unser umfangreiches Angebot an Reinigungen zu erfahren.
+            Bei uns finden Sie eine große Auswahl an hochwertigen Gebrauchtwagen 
+            und einen erstklassigen Service, der keine Wünsche offen lässt. 
+            Ob Sie ein Auto kaufen oder verkaufen möchten – wir sind für Sie da!
           </p>
         </section>
 
@@ -64,23 +31,34 @@ function Home() {
             kaufen oder Ihr eigenes Fahrzeug bewerten lassen und verkaufen – ganz ohne 
             versteckte Kosten. Schnell, transparent und ohne großen Aufwand!
           </p>
-          <p className='text-zinc-300'>
-            Schauen Sie sich unser aktuelles Fahrzeugangebot auf unserer{' '}
-            <a 
-              href="/#/Verkauf" 
-              className='text-blue-400 hover:text-blue-300 transition-colors duration-300'
-            >
-              Verkaufsseite
-            </a>
-            {' '}an oder erfahren Sie auf unserer{' '}
-            <a 
-              href="/#/Ankauf" 
-              className='text-blue-400 hover:text-blue-300 transition-colors duration-300'
-            >
-              Ankaufsseite
-            </a>
-            {' '}alles, was Sie wissen müssen, wenn Sie Ihr Auto an uns verkaufen möchten.
-          </p>
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="bg-zinc-800/30 rounded-xl p-6">
+              <h3 className="text-xl font-semibold text-white mb-4">Unser Fahrzeugangebot</h3>
+              <p className="text-zinc-300 mb-4">
+                Entdecken Sie unsere Auswahl an sorgfältig ausgewählten Fahrzeugen.
+                Qualität und Zuverlässigkeit stehen bei uns an erster Stelle.
+              </p>
+              <a 
+                href="/#/Verkauf" 
+                className='text-blue-400 hover:text-blue-300 transition-colors duration-300'
+              >
+                Zum Fahrzeugangebot →
+              </a>
+            </div>
+            <div className="bg-zinc-800/30 rounded-xl p-6">
+              <h3 className="text-xl font-semibold text-white mb-4">Ihr Fahrzeug verkaufen</h3>
+              <p className="text-zinc-300 mb-4">
+                Profitieren Sie von unserer Expertise und verkaufen Sie Ihr 
+                Fahrzeug schnell und unkompliziert zu fairen Konditionen.
+              </p>
+              <a 
+                href="/#/Ankauf" 
+                className='text-blue-400 hover:text-blue-300 transition-colors duration-300'
+              >
+                Zum Ankauf →
+              </a>
+            </div>
+          </div>
         </section>
       </div>
     </div>

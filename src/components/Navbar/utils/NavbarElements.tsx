@@ -1,18 +1,11 @@
-import { Phone, House, Sparkles, Car, HandCoins } from "lucide-react"
+import { Phone, House, Car, HandCoins } from "lucide-react"
 import { NavbarElement } from "../../../lib/types"
 
-const NavbarElements: NavbarElement[] = [
-    {
+const NavbarElements: NavbarElement[] = [    {
         type: "single",
         key: "Home",
         name: "Home",
         icon: <House size={16} />
-    },
-    {
-        type: "single",
-        key: "Reinigung",
-        name: "Reinigung",
-        icon: <Sparkles size={16} />
     },
     {
         type: "single",

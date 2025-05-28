@@ -79,8 +79,8 @@ const MobileDECars = () => {
         ) : (
           <div className="space-y-4">
             <p className="text-lg text-zinc-600 dark:text-zinc-300">
-              Hier finden Sie eine Auswahl unseres Online-Angebots an Fahrzeugen. <br />
-              Das tatsächliche Angebot kann vom Online-Angebot abweichen, also schauen Sie gerne persönlich bei uns vorbei.
+              Hier finden Sie eine Auswahl unserer Fahrzeuge. <br />
+              Das tatsächliche Angebot kann vom Online-Angebot abweichen, also schauen Sie gerne persönlich bei uns vorbei oder rufen Sie uns unverbindlich an.
             </p>
           </div>
         )}
