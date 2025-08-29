@@ -1,2 +1,0 @@
-In here you should create all globaly used utils. Usualy utils are small / pure functions. Pretty lightweight code to have straightforward input/output-relations.
-You might also group them if possible in files. Something like date.js/ts/jsx/tsx to have many exported functions to convert dates or get dates or add and sub from or to dates.
